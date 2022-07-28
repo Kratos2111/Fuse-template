@@ -1,0 +1,38 @@
+<!--contenedor alinea todos los objetos en columna ocupa todo el ancho disponible-->
+<div class="container flex flex-col w-full">
+    <!--toolbar con posicionamiento sticky, barra de herramientos superior-->
+    <mat-toolbar class="z-10 sticky ">
+        <mat-toolbar-row>
+            <!--boton para desplegar el sidenav-->
+            <button mat-icon-button (click)="activateButtom()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <!--boton para abrir el formulario de agregar nuevo post, se dejara de mostrar si el formulario se renderiza-->
+            <button mat-icon-button (click)="updateBs()" *ngIf="!showForm">
+                <mat-icon>add</mat-icon>
+            </button>
+
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <!--contenedor, almacena los bloques dentro del sidenav y atras de el-->
+    <mat-sidenav-container class="bg-white flex-1" autosize>
+        <!--contenido del sidenav-->
+        <mat-sidenav [(opened)]="isToggle">
+            <div class="text-indigo-600 text-2xl m-2 p-2">TITLE</div>
+            <mat-selection-list [multiple]="false" *ngFor="let p of Posts" (click)="callDetail(p); activateButtom()">
+                <mat-list-option class="m-2 max-w-xs md:max-w-lg">
+                    <p matLine>{{p.title}}</p>
+                </mat-list-option>
+            </mat-selection-list>
+        </mat-sidenav>
+        <!--Contenido detras del sidenav-->
+        <mat-sidenav-content>
+            <div class="grid my-4 mx-auto p-2 justify-items-center md:max-w-1/3">
+                <!--post-detail y add-posts se genera solo uno a la vez dependiendo del valor de showForm-->
+                <app-post-detail [item]="selected" *ngIf="!showForm"></app-post-detail>
+                <app-add-posts *ngIf="showForm"></app-add-posts>
+            </div>
+        </mat-sidenav-content>
+        
+    </mat-sidenav-container>
+</div>

@@ -1,0 +1,10 @@
+<fuse-alert
+  [type]="data.type"
+  [dismissible]="true"
+  (dismissedChanged)="handleDismiss()"
+  [appearance]="'outline'"
+  >
+
+  <span fuseAlertTitle>{{ data.title }}</span>
+  {{ data.message }}
+</fuse-alert>

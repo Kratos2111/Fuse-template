@@ -1,0 +1,26 @@
+<div [formGroup]="postInfo" class="flex flex-col">
+        <p class="font-bold text-xl">Add a new post</p>
+
+        <mat-form-field  appearance="outline" class="w-ful0l">
+            <mat-label>UserId</mat-label>
+            <input matInput placeholder="User Id" formControlName="userId" disabled>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-ful0l">
+            <mat-label>ID</mat-label>
+            <input matInput placeholder="Id" type="number" formControlName="Id">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-ful0l">
+            <mat-label>Title</mat-label>
+            <input matInput placeholder="Title" type="text" formControlName="title">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-ful0l">
+            <mat-label>Body</mat-label>
+            <input matInput placeholder="Body" type="text" formControlName="body">
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="addPosts()">
+            Add Post
+        </button>
+        <button mat-raised-button (click)="hidePost()">
+            Cancel
+        </button>
+    </div>
