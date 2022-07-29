@@ -1,0 +1,22 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CustomSnackbarComponent } from './custom-snackbar.component';
+
+describe('UsersComponent', () => {
+  let component: CustomSnackbarComponent;
+  let fixture: ComponentFixture<CustomSnackbarComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ CustomSnackbarComponent ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(CustomSnackbarComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

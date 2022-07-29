@@ -20,7 +20,7 @@ export class PostsviewComponent implements OnInit, OnDestroy {
   public Posts: PostForms[] = [];
   private _unsubscribe: Subject<boolean> = new Subject<boolean>();
   public path: PostForms;
-  public isToggle = false;
+  public isToggle = true;
   public isAddToggle = false;
   public User;
   public selected: PostForms = {
@@ -49,15 +49,13 @@ export class PostsviewComponent implements OnInit, OnDestroy {
     })
     //se suscribe al servicio sendInfo showForm para saber si el formularios se esta mostrando
     this.sendInfoService.showForm.subscribe( (value) => {this.showForm = value})
-  }
-  //abre formulario para agregar posts
-  openDialog(){
     this.sendInfoService.Shooter.pipe(takeUntil(this._unsubscribe)).subscribe(
       (value) => {
-        this.Posts.push(value);
+        this.Posts.unshift(value)
       }
     )
   }
+  //abre formulario para agregar posts
   //abre o cierra el sidenav cambia su valor booleano
   activateButtom(){
    this.isToggle = !this.isToggle

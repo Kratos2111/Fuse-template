@@ -15,9 +15,9 @@
         </mat-toolbar-row>
     </mat-toolbar>
     <!--contenedor, almacena los bloques dentro del sidenav y atras de el-->
-    <mat-sidenav-container class="bg-white flex-1" autosize>
+    <mat-sidenav-container class="bg-white flex-1" [hasBackdrop]="false">
         <!--contenido del sidenav-->
-        <mat-sidenav [(opened)]="isToggle">
+        <mat-sidenav [(opened)]="isToggle" mode="side">
             <div class="text-indigo-600 text-2xl m-2 p-2">TITLE</div>
             <mat-selection-list [multiple]="false" *ngFor="let p of Posts" (click)="callDetail(p); activateButtom()">
                 <mat-list-option class="m-2 max-w-xs md:max-w-lg">
@@ -27,11 +27,9 @@
         </mat-sidenav>
         <!--Contenido detras del sidenav-->
         <mat-sidenav-content>
-            <div class="grid my-4 mx-auto p-2 justify-items-center md:max-w-1/3">
                 <!--post-detail y add-posts se genera solo uno a la vez dependiendo del valor de showForm-->
                 <app-post-detail [item]="selected" *ngIf="!showForm"></app-post-detail>
-                <app-add-posts *ngIf="showForm"></app-add-posts>
-            </div>
+                <app-add-posts [item]="selected" *ngIf="showForm"></app-add-posts>
         </mat-sidenav-content>
         
     </mat-sidenav-container>
